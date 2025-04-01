@@ -12,5 +12,25 @@ public class Card {
         return value + "-" + type;
     }
 
+    public int getValue() {
+        String specialValues = "JQKA";
+        if(specialValues.contains(value)) {
+            if(value.equals("A")) {
+                return 11; // default for Ace will change later to 1
+            }
+
+            return 10;
+        }
+        return Integer.parseInt(value); // all other values from 2 to 10
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public boolean isAce() {
+        return value.equals("A");
+    }
+
     
 }

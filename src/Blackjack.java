@@ -9,7 +9,7 @@ import javax.swing.*;
 
 public class Blackjack {
 
-    // Player's hand
+    // Deck of cards
     private ArrayList<Card> deck;
     private Random random = new Random();
 
@@ -24,9 +24,84 @@ public class Blackjack {
     private int playerSum;
     private int playerAceCount;
 
+    // For GUI
+    private int boardWidth = 600;
+    private int boardHeight = 600;
+
+    private int cardWidth = 110;
+    private int cardHeight = 154;
+
+    JFrame frame = new JFrame("Blackjack");
+    JPanel gamePanel = new JPanel() {
+        // Drawing on the game panel
+        @Override
+        public void paintComponent(Graphics g) {
+            super.paintComponent(g);
+
+            try {
+                // draw hidden card
+                Image hiddenCardImage = new ImageIcon(getClass().getResource("./cards/BACK.png")).getImage();
+                g.drawImage(hiddenCardImage, 20, 20, cardWidth, cardHeight, null); // 0,0 is top left, 20,20 is to right and down
+
+                // draw dealer's hand
+                for(int i = 0; i < dealerHand.size(); i++) {
+                    Card card = dealerHand.get(i);
+                    Image cardImage = new ImageIcon(getClass().getResource("./cards/" + card.toString() + ".png")).getImage();
+                    g.drawImage(cardImage, cardWidth + 25 + (cardWidth + 5)*i, 20, cardWidth, cardHeight, null);
+                }
+                
+                // draw player's hand
+                for(int i = 0; i < playerHand.size(); i++) {
+                    Card playerCard = playerHand.get(i);
+                    Image cardImage = new ImageIcon(getClass().getResource("./cards/" + playerCard.toString() + ".png")).getImage();
+                    g.drawImage(cardImage, 20 + (cardWidth + 5)*i, 300, cardWidth, cardHeight, null);
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();;
+            }
+        }
+    };
+
+    JPanel buttonPanel = new JPanel();
+    JButton hitButton = new JButton("Hit");
+    JButton stayButton = new JButton("Stay");
+
     // Constructor
     public Blackjack() {
-    
+        startGame();
+
+        // Create the board
+        frame.setVisible(true);
+        frame.setSize(boardWidth, boardHeight);
+        frame.setLocationRelativeTo(null); // GUI pops up in the middle of the screen
+        frame.setResizable(false);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        gamePanel.setLayout(new BorderLayout());
+        gamePanel.setBackground(new Color(53, 101, 77));
+        frame.add(gamePanel); // add panel to frame
+
+        hitButton.setFocusable(false);
+        buttonPanel.add(hitButton);
+        stayButton.setFocusable(false);
+        buttonPanel.add(stayButton);
+        frame.add(buttonPanel, BorderLayout.SOUTH); // add panel to frame
+
+        // action listeners so that GUI can interact with backend code
+        hitButton.addActionListener(new ActionListener() {
+            // hit button draws a new card when clicked
+            public void actionPerformed(ActionEvent e) {
+                Card card = deck.remove(deck.size() - 1);
+                playerSum += card.getValue();
+                playerAceCount = card.isAce() ? 1 : 0;
+                playerHand.add(card);
+
+                gamePanel.repaint(); // this calls the paint component overridden above
+            }
+        });
+
+        gamePanel.repaint(); // add to the constructor also 
     }
 
     // Methods here

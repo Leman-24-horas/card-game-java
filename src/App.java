@@ -5,8 +5,8 @@ public class App {
         // blackJack.buildDeck();
         // System.out.println();
         // blackJack.shuffleDeck();
-        blackJack.startGame();
-        Board board = new Board();
+        // blackJack.startGame();
+        // Board board = new Board();
     }
 
 }

@@ -41,6 +41,9 @@ public class Blackjack {
             try {
                 // draw hidden card
                 Image hiddenCardImage = new ImageIcon(getClass().getResource("./cards/BACK.png")).getImage();
+                if(stayButton.isEnabled() == false) {
+                    hiddenCardImage = new ImageIcon(getClass().getResource("./cards/" + hiddenCard.toString() + ".png")).getImage();
+                }
                 g.drawImage(hiddenCardImage, 20, 20, cardWidth, cardHeight, null); // 0,0 is top left, 20,20 is to right and down
 
                 // draw dealer's hand
@@ -55,6 +58,32 @@ public class Blackjack {
                     Card playerCard = playerHand.get(i);
                     Image cardImage = new ImageIcon(getClass().getResource("./cards/" + playerCard.toString() + ".png")).getImage();
                     g.drawImage(cardImage, 20 + (cardWidth + 5)*i, 300, cardWidth, cardHeight, null);
+                }
+
+                if(stayButton.isEnabled() == false) {
+                    int finalDealerSum = reduceDealerAce();
+                    int finalPlayerSum = reducePlayerAce();
+
+                    System.out.println("STAY:");
+                    System.out.println("Final dealerSum = " + finalDealerSum);
+                    System.out.println("Final playerSum = " + finalPlayerSum);
+
+                    String message = "";
+                    if(finalPlayerSum > 21) {
+                        message = "You Lose!";
+                    } else if (finalDealerSum > 21) {
+                        message = "You Win!";
+                    } else if (finalPlayerSum == finalDealerSum) {
+                        message = "Oops! It's a Tie";
+                    } else if (finalPlayerSum > finalDealerSum) {
+                        message = "You Win!";
+                    } else if (finalPlayerSum < finalDealerSum) {
+                        message = "You Lose!";
+                    }
+
+                    g.setFont(new Font("Arial", Font.PLAIN, 30));
+                    g.setColor(Color.white);
+                    g.drawString(message, 220, 250);
                 }
 
             } catch (Exception e) {
@@ -97,7 +126,32 @@ public class Blackjack {
                 playerAceCount = card.isAce() ? 1 : 0;
                 playerHand.add(card);
 
+                if(reducePlayerAce() > 21) {
+                    hitButton.setEnabled(false);
+                }
+
                 gamePanel.repaint(); // this calls the paint component overridden above
+            }
+        });
+
+        stayButton.addActionListener(new ActionListener() {
+            // stay means no more cards
+            public void actionPerformed(ActionEvent e) {
+                // cheack playerSum and dealerSum
+                // see who is bigger and declare winner
+                hitButton.setEnabled(false);
+                stayButton.setEnabled(false);
+
+                // dealer must draw until dealerSum  >= 17
+                while(dealerSum < 17) {
+                    Card dealerCard = deck.remove(deck.size() - 1);
+                    dealerSum += dealerCard.getValue();
+                    dealerAceCount = dealerCard.isAce() ? 1 : 0;
+                    dealerHand.add(dealerCard);
+                }
+
+                gamePanel.repaint(); 
+
             }
         });
 
@@ -191,6 +245,25 @@ public class Blackjack {
 
         System.out.println("AFTER SHUFFLE");
         System.out.println(deck);
+    }
+
+    // Helper methods
+    public int reducePlayerAce() {
+        while (playerSum > 21 && playerAceCount > 0) {
+            playerSum -= 10; // Ace is 11 so subtract 10 to make it 1
+            playerAceCount--;
+        }
+
+        return playerSum; // it's a global variable so return directly
+    }
+
+    public int reduceDealerAce() {
+        while (dealerSum > 21 && dealerAceCount > 0) {
+            dealerSum -= 10; // Ace is 11 so subtract 10 to make it 1
+            dealerAceCount--;
+        }
+
+        return dealerSum; // it's a global variable so return directly
     }
 }
 

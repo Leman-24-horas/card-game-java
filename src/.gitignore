@@ -1,0 +1,8 @@
+# Ignore compiled Java class files
+*.class
+
+# Ignore IDE-specific files
+*.iml
+.idea/
+.vscode/
+*.log

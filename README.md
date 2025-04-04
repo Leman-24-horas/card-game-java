@@ -14,3 +14,8 @@ This project is a Java-based implementation of the classic card game Blackjack. 
 ## Prerequisites
 
 ## Running the Application
+
+explain OOP
+parent - player
+child - dealer
+methods - to simply eg instead of player.setSum(player.getSum + card.getValue()) -> simplified to player.addSum(card.getValue())

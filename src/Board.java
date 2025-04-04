@@ -59,3 +59,47 @@
 //     }
 
 // }
+
+// import javax.swing.JFrame;
+// import javax.swing.JPanel;
+// import javax.swing.JButton;
+
+
+// import java.awt.BorderLayout;
+// import java.awt.Color;
+
+
+// public class Board extends JPanel {
+//     // private JFrame frame = new JFrame("Blackjack");
+//     // private JPanel gamePanel = new JPanel();
+
+//     // private JPanel buttonPanel = new JPanel();
+//     // private JButton hitButton = new JButton("Hit");
+//     // private JButton stayButton = new JButton("Stay");
+
+//     public Board() {
+
+//         // frame.setVisible(true);
+//         // frame.setSize(width, height);
+//         // frame.setLocationRelativeTo(null); // GUI pops up in the middle of the screen
+//         // frame.setResizable(false);
+//         // frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+//         // setBackground(new Color(53, 101, 77));
+//         // gamePanel.setLayout(new BorderLayout());
+//         // // frame.add(gamePanel); 
+
+//         // // adding buttons to the panel
+//         // hitButton.setFocusable(false);
+//         // buttonPanel.add(hitButton);
+//         // stayButton.setFocusable(false);
+//         // buttonPanel.add(stayButton);
+//         // frame.add(buttonPanel, BorderLayout.SOUTH); // add panel to frame
+
+//     }
+
+//     // public void setColor(int r, int g, int b) {
+//     //     gamePanel.setBackground(new Color(r, g, b));
+//     // }
+// }
+

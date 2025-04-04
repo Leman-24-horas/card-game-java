@@ -15,22 +15,28 @@ public class Blackjack {
     private ArrayList<Card> deck;
     private Random random = new Random();
 
+    /* Repeating code put into a method
+     * So that I can call it in GameWindow class
+     */
+    public Card drawCardFromDeck() {
+        return deck.remove(deck.size() - 1);
+    }
+
     // b) Player & dealer entities
-    private Player player;
+    private Player player; // protected so that I can access directly in GamePanel without getter/setter
     private Dealer dealer;
 
-    // Dealer's hand
-    private Card hiddenCard; // keep hidden card here since GUI
-    // ArrayList<Card> dealerHand;
-    // private int dealerSum;
-    // private int dealerAceCount; // Ace can be 1 or 11
+    public Player getPlayer() {
+        return this.player;
+    }
 
-    // Player's hand
-    ArrayList<Card> playerHand;
-    private int playerSum;
-    private int playerAceCount;
+    public Dealer getDealer() {
+        return this.dealer;
+    }
 
     // For GUI
+    // private JFrame frame;
+    // private Board board;
     // private int boardWidth = 600;
     // private int boardHeight = 600;
 
@@ -44,16 +50,16 @@ public class Blackjack {
     // public void paintComponent(Graphics g) {
     // super.paintComponent(g);
 
-    // try {
+    // try
+    // {
     // // draw hidden card
-    // Image hiddenCardImage = new
-    // ImageIcon(getClass().getResource("./cards/BACK.png")).getImage();
+    // // Image hiddenCardImage = new
+    // // ImageIcon(getClass().getResource("./cards/BACK.png")).getImage();
     // if(stayButton.isEnabled() == false) {
     // hiddenCardImage = new ImageIcon(getClass().getResource("./cards/" +
     // hiddenCard.toString() + ".png")).getImage();
     // }
-    // g.drawImage(hiddenCardImage, 20, 20, cardWidth, cardHeight, null); // 0,0 is
-    // top left, 20,20 is to right and down
+    // // g.drawImage(hiddenCardImage, 20, 20, cardWidth, cardHeight, null); // 0,0 is top left, 20,20 is to right and down
 
     // // draw dealer's hand
     // for(int i = 0; i < dealerHand.size(); i++) {
@@ -99,11 +105,13 @@ public class Blackjack {
     // g.drawString(message, 220, 250);
     // }
 
-    // } catch (Exception e) {
-    // e.printStackTrace();;
+    // }catch(
+    // Exception e)
+    // {
+    //     e.printStackTrace();
+    //     ;
     // }
-    // }
-    // };
+    // }};
 
     // JPanel buttonPanel = new JPanel();
     // JButton hitButton = new JButton("Hit");
@@ -173,18 +181,6 @@ public class Blackjack {
 
     // Methods here
 
-    public void startGame() {
-        /*
-         * 1. Create deck of cards
-         * 2. Shuffle them
-         * 3. Create player & dealer entity and give them 2 cards each
-         */
-
-        buildDeck();
-        shuffleDeck();
-        initializeEntities();
-    }
-
     // Helper methods
     // public int reducePlayerAce() {
     // while (playerSum > 21 && playerAceCount > 0) {
@@ -241,32 +237,33 @@ public class Blackjack {
     // 3. Initialize player and dealer
     public void initializeEntities() {
         // a) Dealer initialization
-        dealer = new Dealer(new ArrayList<Card>(), 0, 0);
-
         /*
          * Give dealer a card from the back of the deck
          * Remove that card from the deck
          */
-        hiddenCard = deck.remove(deck.size() - 1);
+        Card hiddenCard = deck.remove(deck.size() - 1);
+        dealer = new Dealer(new ArrayList<Card>(), 0, 0, hiddenCard);
+
         dealer.addSum(hiddenCard.getValue());
         if (hiddenCard.isAce()) {
             dealer.addAceCount();
         }
 
         // Dealer not hidden card aka hand
-        Card card = deck.remove(deck.size() - 1);
-        dealer.addSum(card.getValue());
-        if (card.isAce()) {
+        Card dealerCard = deck.remove(deck.size() - 1);
+        dealer.addSum(dealerCard.getValue());
+        if (dealerCard.isAce()) {
             dealer.addAceCount();
         }
-        dealer.addToHand(card);
+        dealer.addToHand(dealerCard);
 
         System.out.println();
         System.out.println("Dealer hand");
         System.out.println("hiddenCard = " + hiddenCard);
-        System.out.println("Card = " + card);
+        System.out.println("Card = " + dealerCard);
         System.out.println("dealerSum = " + dealer.getSum());
         System.out.println("dealerAceCount = " + dealer.getAceCount());
+        System.out.println("dealer hand - " + dealer.getHand());
 
         // b) Player initialization
         player = new Player(new ArrayList<Card>(), 0, 0);
@@ -281,11 +278,39 @@ public class Blackjack {
             if (playerCard.isAce()) {
                 player.addAceCount();
             }
-            player.addToHand(card);
+            player.addToHand(playerCard);
             System.out.println("playerCard = " + playerCard);
         }
 
         System.out.println("playerSum = " + player.getSum());
         System.out.println("playerAceCount = " + player.getAceCount());
     }
+
+    // 4. Start the game
+    public void startGame() {
+        /*
+         * 1. Create deck of cards
+         * 2. Shuffle them
+         * 3. Create player & dealer entity and give them 2 cards each
+         */
+
+        buildDeck();
+        shuffleDeck();
+        initializeEntities();
+        // createBoard();
+    }
+
+    // 5. GUI
+    // public void createBoard() {
+    // JFrame frame = new JFrame("Blackjack");
+    // frame.setVisible(true);
+    // frame.setSize(600, 600);
+    // frame.setLocationRelativeTo(null); // GUI pops up in the middle of the screen
+    // frame.setResizable(false);
+    // frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+    // Board gameBoard = new Board();
+    // frame.add(gameBoard);
+    // }
+
 }

@@ -1,12 +1,9 @@
 public class App {
     public static void main(String[] args) {
-        Blackjack blackJack = new Blackjack();
-
-        // blackJack.buildDeck();
-        // System.out.println();
-        // blackJack.shuffleDeck();
-        // blackJack.startGame();
-        // Board board = new Board();
+        Blackjack game = new Blackjack();
+        GamePanel gamePanel = new GamePanel(game);
+        GameWindow gameWindow = new GameWindow(gamePanel, game);
+        gamePanel.setWindow(gameWindow);
     }
 
 }

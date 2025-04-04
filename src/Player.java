@@ -48,11 +48,13 @@ public class Player {
         hand.add(card);
     }
 
-    public void reduceAce() {
+    public int reduceAce() {
         while(sum > 21 && aceCount > 0) {
             sum -= 10;
             aceCount--;
         }
+
+        return sum;
     }
 
 }

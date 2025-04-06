@@ -1,6 +1,5 @@
 # Ignore compiled Java class files
 *.class
-/classes/*.class
 
 # Ignore IDE-specific files
 *.iml

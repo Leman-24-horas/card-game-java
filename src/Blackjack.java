@@ -1,5 +1,3 @@
-
-/* For GUI */
 import java.util.ArrayList;
 import java.util.Random;
 

@@ -1,21 +1,67 @@
 # Blackjack Card Game
 *created by Aditya Kumar Bhardwaj*
 
+
 ## Overview
-This project is a Java-based implementation of the classic card game Blackjack. The game follows standard Blackjack rules, where players compete against the dealer to achieve a hand value as close to 21 as possible without exceeding it. The program includes essential features such as card dealing, hit and stay options, and dealer logic.
+This project is a Java-based implementation of the classic card game Blackjack. The game follows standard Blackjack rules, where players compete against the dealer to achieve a hand value as close to 21 as possible without exceeding it. 
+
+
+### Blackjack logic
+Blackjack uses the standard deck of cards containing the traditional 4 suits (Clubs, Diamonds, Hearts, and Spades) each with the convential 13 ranks (2 to 10, Jack, Queen, King, and Ace). However, in Blackjack the following cards all have a value of 10:
+- Jack
+- Queen
+- King
+
+The **Ace**, on the other hand, begins with a value of 11 and when the player's or dealer's hand exceeds 21, the Ace's value changes to 1 to allow both the dealer and the player to remain in the game for longer and compete in getting closer to 21.
+
+When the game starts, the player is dealt with 2 cards in his/her hand whereas the dealer starts with one card in his/her hand and has another card that is hidden (face-down). The player then has the choice to either stay with their hand of cards or to draw more cards by pressing the `Hit` button.
+
+Each round is played until the player decides to stay with their hand of cards, following which the dealer takes their turn drawing cards. In the end, the hidden card is revealed and a winner is determined by evaluating which player's hand is closer to 21. If either the player's or the dealer's hand exceeds 21, they will automatically lose. 
+
 
 ## Key Features
-- **Card Dealing:** game uses the Java Random library to shuffle and deal cards, each player starts with 2 cards and when the value exceeds 21 Ace (which can be either 11 or 1) is changed to have a value of 1 so that player and dealer can reach close to 21
-- **Dealer Logic:** dealer starts with one hidden card and one exposed card. When the player clicks the stay button the dealer is dealt cards until his hand has a value of 17 or more at which point the algorithm compares the hands of the dealer and the player to determine the winner.
-- **Hit/Stay Options:** Player is presented with 2 options/buttons Hit or Stay. The player cannot hit to get more and more cards, the hit button will become unavailbe once the player's hand exceeds 21. When stay button is clicked the dealer is dealt cards as mentioned above and then the game proceeds to determine the winner.
+- **Object-Oriented-Design:** The program follows an **object-oriented** approach by organizing the code into distinct objects such as `Player`, `Dealer`, `Card`, `GamePanel`, `GameFrame`, and `Blackjack`. Instead of placing all logic in a single file, the functionality of this codebase is modularized across multiple classes, resulting in a cleaner, more maintainable, and well-structured code.
+
+- **Card Dealing Algorithm:** To ensure fair play, the game uses a shuffled deck by implementing Java's `Random` class. Both the player and dealer start with 2 cards and upon subsequent turns when the player's or dealer's hand exceeds 21, the algorithm adjusts the value of any **Aces**, present in the hands, from 11 to 1.
+
+- **Dealer Logic:** Dealer starts with one hidden card (face-down) and one visible card (face-up). Once the player clicks **Stay**, the dealer automatically draws additional cards until his/her hand reaches a value of 17 or higher. At this point, both the dealer's and player's hands are compared and the winner is determined as per standard Blackjack rules.
+
+- **Interactive Graphic User Interface (GUI):** When the game is launched, an interactive window appears displaying both the dealer's and player's cards, along with `Hit` and `Stay` buttons for user interaction. The player cannot continue hitting indefinitely - if the player's hand value exceeds 21, the Hit button is disabled (grayed out), preventing further interaction.
+
 
 ## Technologies Used
+- `java.util`: Utilized in this codebase for implementing `Lists` and for using the `Random` class to handle deck shuffling. 
+
+- `java.awt`: **Abstract Window Toolkit (awt)** is a foundational Java library used for creating and managing essential GUI components such as colors, fonts, images, and layouts. 
+
+- `java.awt.event`: Provides the `ActionListener` interface used for integrating frontend elements like the Hit and Stay buttons to the backend logic.  
+
+- `javax.swing`: For creating frames, panels, and buttons in the GUI. Swing also provides custom methods like `paintComponent(Graphics g)` for drawing images of cards on the game panel.
+
 
 ## Prerequisites
+- **Java 17** or higher
+- A IDE of choice like **Visual Studio Code**
+
 
 ## Running the Application
+1. Clone the repository
+    ``` bash
+    git clone https://github.com/Leman-24-horas/card-game-java.git     
+    ```
 
-explain OOP
-parent - player
-child - dealer
-methods - to simply eg instead of player.setSum(player.getSum + card.getValue()) -> simplified to player.addSum(card.getValue())
+2. Run the `compile.bat` file by pressing the play button in your IDE.
+
+3. Run the `run.bat` file by pressing the play button in your IDE.
+
+Alternatively, you can head over to the `src` folder and run the `App.java` file directly. 
+
+## Future Improvements
+- Implement a `Play Again` button and extend the backend logic to allow multiple arounds instead of requiring a relaunch of the game.
+
+- Add a welcome screen with options such as `Start Game`, `Instructions`, `Exit` etc to enhance user experience and create a more professional feel similar to actual videogames. 
+
+- Add a `Role Selection` feature, where users can choose whether to play as the dealer or the player, together with a `Single Player/Multiplayer` mode. In Single Player mode the user plays their chosen role while the computer takes the opposite role. In Multiplayer mode, two users can play against each other by selecting opposite roles. 
+
+## Acknowledgements
+This project is adapted from a tutorial, from Kenny Yip Coding on YouTube, which served as a foundation for understanding how to implement the Blackjack game in Java. The code presented in this repository has been written and adapted independently by me, with modifications and improvements to suit my personal programming style. 

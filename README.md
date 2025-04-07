@@ -59,9 +59,9 @@ Alternatively, you can head over to the `src` folder and run the `App.java` file
 ## Future Improvements
 - Implement a `Play Again` button and extend the backend logic to allow multiple arounds instead of requiring a relaunch of the game.
 
-- Add a welcome screen with options such as `Start Game`, `Instructions`, `Exit` etc to enhance user experience and create a more professional feel similar to actual videogames. 
+- Add a welcome screen with options such as `Start Game`, `Instructions`, and `Exit` to enhance user experience and create a more professional feel similar to actual videogames. 
 
 - Add a `Role Selection` feature, where users can choose whether to play as the dealer or the player, together with a `Single Player/Multiplayer` mode. In Single Player mode the user plays their chosen role while the computer takes the opposite role. In Multiplayer mode, two users can play against each other by selecting opposite roles. 
 
 ## Acknowledgements
-This project is adapted from a tutorial, from Kenny Yip Coding on YouTube, which served as a foundation for understanding how to implement the Blackjack game in Java. The code presented in this repository has been written and adapted independently by me, with modifications and improvements to suit my personal programming style. 
+This project is adapted from a tutorial, by Kenny Yip Coding on YouTube, which served as a foundation for understanding how to implement the Blackjack game in Java. The code presented in this repository has been written and adapted independently by me, with modifications and improvements to suit my personal programming style. 

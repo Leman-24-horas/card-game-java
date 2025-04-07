@@ -65,3 +65,7 @@ Alternatively, you can head over to the `src` folder and run the `App.java` file
 
 ## Acknowledgements
 This project is adapted from a tutorial, by Kenny Yip Coding on YouTube, which served as a foundation for understanding how to implement the Blackjack game in Java. The code presented in this repository has been written and adapted independently by me, with modifications and improvements to suit my personal programming style. 
+
+## Demo
+Please find the video for the Blackjack Demo
+[here](https://drive.google.com/file/d/1vZ5mWxa6JAsn6Jdtk_tievPdCa2UzDXE/view?usp=sharing)

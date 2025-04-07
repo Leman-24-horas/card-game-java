@@ -68,4 +68,6 @@ This project is adapted from a tutorial, by Kenny Yip Coding on YouTube, which s
 
 ## Demo
 Please find the video for the Blackjack Demo
-[here](https://drive.google.com/file/d/1vZ5mWxa6JAsn6Jdtk_tievPdCa2UzDXE/view?usp=sharing)
+[here](https://drive.google.com/file/d/1vZ5mWxa6JAsn6Jdtk_tievPdCa2UzDXE/view?usp=sharing). 
+
+If there are any issues with playing the video on the cloud, please download the video and play it locally on your computer. 

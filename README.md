@@ -20,7 +20,7 @@ Each round is played until the player decides to stay with their hand of cards, 
 
 
 ## Key Features
-- **Object-Oriented-Design:** The program follows an **object-oriented** approach by organizing the code into distinct objects such as `Player`, `Dealer`, `Card`, `GamePanel`, `GameFrame`, and `Blackjack`. Instead of placing all logic in a single file, the functionality of this codebase is modularized across multiple classes, resulting in a cleaner, more maintainable, and well-structured code.
+- **Object-Oriented-Design:** The Blackjack game follows 2 core principles of object-oriented programming: **Inheritance** and **Encapsulation**. The `Dealer` class extends the `Player` class, inheriting all of its methods which promotes code reuse and reduces duplication. In addition, attributes in all classes are marked as `private` and can only be accessed using their respective `public` getter and setter methods. This ensures encapsulation, encouraging controlled interaction between objects.
 
 - **Card Dealing Algorithm:** To ensure fair play, the game uses a shuffled deck by implementing Java's `Random` class. Both the player and dealer start with 2 cards and upon subsequent turns when the player's or dealer's hand exceeds 21, the algorithm adjusts the value of any **Aces**, present in the hands, from 11 to 1.
 
@@ -63,11 +63,11 @@ Alternatively, you can head over to the `src` folder and run the `App.java` file
 
 - Add a `Role Selection` feature, where users can choose whether to play as the dealer or the player, together with a `Single Player/Multiplayer` mode. In Single Player mode the user plays their chosen role while the computer takes the opposite role. In Multiplayer mode, two users can play against each other by selecting opposite roles. 
 
-## Acknowledgements
-This project is adapted from a tutorial, by Kenny Yip Coding on YouTube, which served as a foundation for understanding how to implement the Blackjack game in Java. The code presented in this repository has been written and adapted independently by me, with modifications and improvements to suit my personal programming style. 
-
 ## Demo
 Please find the video for the Blackjack Demo
 [here](https://drive.google.com/file/d/1vZ5mWxa6JAsn6Jdtk_tievPdCa2UzDXE/view?usp=sharing). 
 
 If there are any issues with playing the video on the cloud, please download the video and play it locally on your computer. 
+
+## Acknowledgements
+This project was written and adapted independently, from a [tutorial](https://youtu.be/GMdgjaDdOjI) by Kenny Yip Coding on YouTube, with modifications and improvements made by using principles of Object-Oriented Programming. 

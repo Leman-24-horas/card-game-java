@@ -10,8 +10,8 @@ public class GameWindow {
     private JFrame frame = new JFrame("Blackjack");
 
     private JPanel buttonPanel = new JPanel();
-    private JButton hitButton = new JButton("Hit"); // protected so that I can access these in GamePanel
-    protected JButton stayButton = new JButton("Stay");
+    private JButton hitButton = new JButton("Hit");
+    private JButton stayButton = new JButton("Stay");
 
     public GameWindow(GamePanel gamePanel, Blackjack game) { // need to pass in player & dealer
         frame.setVisible(true);

@@ -7,7 +7,7 @@ This project is a Java-based implementation of the classic card game Blackjack. 
 
 
 ### Blackjack logic
-Blackjack uses the standard deck of cards containing the traditional 4 suits (Clubs, Diamonds, Hearts, and Spades) each with the convential 13 ranks (2 to 10, Jack, Queen, King, and Ace). However, in Blackjack the following cards all have a value of 10:
+Blackjack uses the standard deck of cards containing the traditional 4 suits (Clubs, Diamonds, Hearts, and Spades) each with the conventional 13 ranks (2 to 10, Jack, Queen, King, and Ace). However, in Blackjack the following cards all have a value of 10:
 - Jack
 - Queen
 - King
@@ -24,7 +24,7 @@ Each round is played until the player decides to stay with their hand of cards, 
 
 - **Card Dealing Algorithm:** To ensure fair play, the game uses a shuffled deck by implementing Java's `Random` class. Both the player and dealer start with 2 cards and upon subsequent turns when the player's or dealer's hand exceeds 21, the algorithm adjusts the value of any **Aces**, present in the hands, from 11 to 1.
 
-- **Dealer Logic:** Dealer starts with one hidden card (face-down) and one visible card (face-up). Once the player clicks **Stay**, the dealer automatically draws additional cards until his/her hand reaches a value of 17 or higher. At this point, both the dealer's and player's hands are compared and the winner is determined as per standard Blackjack rules.
+- **Dealer Logic:** Dealer starts with one hidden card (face-down) and one visible card (face-up). Once the player clicks **Stay**, the dealer automatically draws additional cards until his/her hand (together with the hidden card) reaches a value of 17 or higher. At this point, both the dealer's and player's hands are compared and the winner is determined as per standard Blackjack rules.
 
 - **Interactive Graphic User Interface (GUI):** When the game is launched, an interactive window appears displaying both the dealer's and player's cards, along with `Hit` and `Stay` buttons for user interaction. The player cannot continue hitting indefinitely - if the player's hand value exceeds 21, the Hit button is disabled (grayed out), preventing further interaction.
 
